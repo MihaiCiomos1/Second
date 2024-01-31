@@ -1,112 +1,151 @@
-package Tests;
+package demoQAWebsite.Tests;
 
-
-import org.openqa.selenium.*;
+import demoQAWebsite.HelperMethods.ElementsMethods;
+import demoQAWebsite.HelperMethods.JavascriptHelpers;
+import demoQAWebsite.ShareData.ShareData;
+import demoQAWebsite.pages.CommonPage;
+import demoQAWebsite.pages.HomePage;
+import demoQAWebsite.pages.PracticeFormPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
-public class PracticeFormTest {
-    public WebDriver driver;
+public class PracticeFormTest extends ShareData {
+
+
+    HomePage homePage;
+    CommonPage commonPage;
+    PracticeFormPage practiceFormPage;
+
     @Test
-    public void AutomationMethod() {
-        //deschidem Chrome browser
-        driver = new ChromeDriver();
+    public void automationMethod() throws InterruptedException {
 
-        //accesam o pagina web
-        driver.get("https://demoqa.com/");
 
-        //facem browserul in modul maximize
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        practiceFormPage= new PracticeFormPage(getDriver());
 
-        driver.manage().window().maximize();
+        homePage.goToDesiredMenu("Forms");
+        commonPage.goToDesiredSubMenu("Practice Form");
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)");
 
-        WebElement FormField= driver.findElement(By.xpath("//h5[text()='Forms']"));
-        FormField.click();
 
-        WebElement PracticeFormField= driver.findElement(By.xpath("//span[text()='Practice Form']"));
-        PracticeFormField.click();
+        practiceFormPage.completeFirstRegion("Cristi",  "Pop", "test@test.com", "adress", "0756552211");
+        practiceFormPage.completeGender("Male");
+        //  practiceFormPage.completeSubject("Maths");
+        List<String> subjectsList=new ArrayList<>();
+        subjectsList.add("Maths");
+        subjectsList.add("English");
+        practiceFormPage.completeSubjectWithList(subjectsList);
+        List<String> hobies = new ArrayList<>();
+        hobies.add("Sports");
+        hobies.add("Reading");
+        hobies.add("Music");
+        practiceFormPage.completeHobies(hobies);
 
-        WebElement FirstNameElement= driver.findElement(By.id("firstName"));
-        String firstNameValue = "Cristi";
-        FirstNameElement.sendKeys(firstNameValue);
-
-        WebElement LastNameElement= driver.findElement(By.id("lastName"));
-        String LastNameValue="Pop";
-        LastNameElement.sendKeys(LastNameValue);
-
-        WebElement EmailElement= driver.findElement(By.id("userEmail"));
-        String EmailValue="test@yahoo.com";
-        EmailElement.sendKeys(EmailValue);
-
-        WebElement MobileField= driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
-        String MobileValue="1234567890";
-        MobileField.sendKeys(MobileValue);
-
-        WebElement PictureElement= driver.findElement(By.id("uploadPicture"));
-
-        File file = new File("src/test/resources/1.png");
-        PictureElement.sendKeys(file.getAbsolutePath());
-
-        WebElement MaleElement= driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
-        WebElement FemaleElement= driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
-        WebElement OtherElement= driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
-
-        String Gender="Other";
-        if(MaleElement.getText().equals(Gender))
-        {
-            MaleElement.click();
-        }
-        else if (FemaleElement.getText().equals(Gender))
-        {
-            FemaleElement.click();
-        }
-        else if (OtherElement.getText().equals(Gender))
-        {
-            OtherElement.click();
-        }
-
-        WebElement SubjectsElement= driver.findElement(By.id("subjectsInput"));
-        String SubjectsValue="Social Studies";
-        SubjectsElement.sendKeys(SubjectsValue);
-        SubjectsElement.sendKeys(Keys.ENTER);
-
-        WebElement StateElement= driver.findElement(By.id("react-select-3-input"));
-        js.executeScript("arguments[0].click();", StateElement);
-        StateElement.sendKeys("NCR");
-        StateElement.sendKeys(Keys.ENTER);
-
-        WebElement CityElement= driver.findElement(By.id("react-select-4-input"));
-        js.executeScript("arguments[0].click();", CityElement);
-        CityElement.sendKeys("Delhi");
-        CityElement.sendKeys(Keys.ENTER);
-
-        WebElement submitElement = driver.findElement(By.id("submit"));
-        js.executeScript("arguments[0].click();", submitElement);
-
-       WebElement bodyTabel= driver.findElement(By.xpath("//div[@class='modal-content']"));
-       HashMap<String, String> campuri = new HashMap<>();
-       List<WebElement> randuri = bodyTabel.findElements(By.tagName("tr"));
-       for(WebElement rand : randuri)
-       {
-           List<WebElement> celule = rand.findElements(By.tagName("td"));
-           if(celule.size()>=2)
-           {
-               String label = celule.get(0).getText();
-               String value = celule.get(1).getText();
-               campuri.put(label, value);
-           }
-       }
-
-        assert campuri.get("Student Email").equals(EmailValue);
+        practiceFormPage.completeState("NCR", "Delhi");
+        practiceFormPage.submit();
+//        practiceFormPage.completeCity("Delhi");
+//
+//
+//        WebElement yearElement = driver.findElement(By.xpath("//select[@class='react-datepicker__year-select']"));
+//        elementMethods.selectByValue(yearElement, yearOfBirthValue);
+//
+//        WebElement monthElement = driver.findElement(By.xpath("//select[@class='react-datepicker__month-select']"));
+//        elementMethods.selectByVisibleText(monthElement, monthOfBirthValue);
+//
+//        String dayOfBirthxPath = "//div[@class='react-datepicker__day react-datepicker__day--0" + dayOfBirthValue + "']";
+//        WebElement dayOfBirthElement = driver.findElement(By.xpath(dayOfBirthxPath));
+//        elementMethods.clickOnElement(dayOfBirthElement);
+//
+//
+//
+//
+//
+//        // State:
+//        WebElement stateElement = driver.findElement(By.id("react-select-3-input"));
+//        javascriptHelpers.forceClick(stateElement);
+//        elementMethods.fillElementWithEnter(stateElement, "NCR");
+//
+//        // City:
+//        WebElement cityElement = driver.findElement(By.id("react-select-4-input"));
+//        javascriptHelpers.forceClick(cityElement);
+//        elementMethods.fillElementWithEnter(cityElement, "Delhi");
+//
+//        // Submit Form:
+//        WebElement submitElement = driver.findElement(By.id("submit"));
+//        javascriptHelpers.forceClick(submitElement);
+//
+//        // Tema: Compararea datelor de dupa Submit:
+//
+//        // Pregatim datele pentru comparari si facem formatarile necesare unde e cazul
+//        // in functie de cum sunt afisate in pagina de dupa "Submit"
+//        String expectedStudentName = "Daniel Mindru";
+//        String expectedEmail = "daniel@test.com";
+//        String expectedMobileNumber = "0740696969";
+//        String expectedGender = "Male";
+//        String expectedDateOfBirth = String.format("%s %s,%s", dayOfBirthValue, monthOfBirthValue, yearOfBirthValue); // Format: "DD Month,YYYY"
+//        String expectedSubjects = String.join(", ", subjectValues); // Lista de subiecte concatenata cu virgula si spatiu ", "
+//        String expectedHobbies = String.join(", ", hobbiesValues); // Lista de hobbies concatenata cu virgula si spatiu ", "
+//
+//        // Sample: "src/test/resources/1.png";  -> Trebuie sa luam doar ultima parte
+//        String[] filePathStrings = "src/test/resources/1.png".split("/");
+//        String expectedPicture = filePathStrings[filePathStrings.length - 1];
+//
+//        String expectedAddress = currentAddressValue.replaceAll("\n", " ");
+//        String expectedStateAndCity = "NCR" + " " + "Delhi";
+//
+//        Map<String, String> expectedValuesMap = new LinkedHashMap<>();
+//        expectedValuesMap.put("Student Name", expectedStudentName);
+//        expectedValuesMap.put("Student Email", expectedEmail);
+//        expectedValuesMap.put("Gender", expectedGender);
+//        expectedValuesMap.put("Mobile", expectedMobileNumber);
+//        expectedValuesMap.put("Date of Birth", expectedDateOfBirth);
+//        expectedValuesMap.put("Subjects", expectedSubjects);
+//        expectedValuesMap.put("Hobbies", expectedHobbies);
+//        expectedValuesMap.put("Picture", expectedPicture);
+//        expectedValuesMap.put("Address", expectedAddress);
+//        expectedValuesMap.put("State and City", expectedStateAndCity);
+//
+//        int index = 0;
+//        for (String key : expectedValuesMap.keySet()) {
+//            String labelElementXPath = "//tbody/tr[" + (index + 1) + "]/td[1]";
+//            WebElement labelElement = driver.findElement(By.xpath(labelElementXPath));
+//            System.out.println("Label Element: " + labelElement.getText());
+//            Assert.assertEquals(labelElement.getText(), key);
+//
+//            String valueElementXPath = "//tbody/tr[" + (index + 1) + "]/td[2]";
+//            WebElement valueElement = driver.findElement(By.xpath(valueElementXPath));
+//            System.out.println("Value Element: " + valueElement.getText());
+//            Assert.assertEquals(valueElement.getText(), expectedValuesMap.get(key));
+//
+//            index++;
+//        }
+//
+//        /* Sample table:
+//        Student Name	    Daniel Mindru
+//        Student Email	    daniel@test.com
+//        Gender	            Male
+//        Mobile	            0740696969
+//        Date of Birth	    30 March,1988
+//        Subjects	        Social Studies, Maths, History
+//        Hobbies	            Sports, Music
+//        Picture	            1.png
+//        Address	            Targu Mures, Romania Line 2 Line 3
+//        State and City	    NCR Delhi
+//
+//         */
+//
+//        Thread.sleep(10000);
+//        driver.close();
 
     }
 }
