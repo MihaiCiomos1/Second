@@ -1,22 +1,13 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.HomePage;
-import demoQAWebsite.pages.PracticeFormPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import ShareData.ShareData;
 import org.testng.annotations.Test;
+import pages.CommonPage;
+import pages.HomePage;
+import pages.PracticeFormPage;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PracticeFormTest extends ShareData {
 

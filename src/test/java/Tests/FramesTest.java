@@ -1,28 +1,19 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.FramesMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.FramesPage;
-import demoQAWebsite.pages.HomePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import ShareData.ShareData;
 import org.testng.annotations.Test;
+import pages.CommonPage;
+import pages.FramesPage;
+import pages.HomePage;
 
 public class FramesTest extends ShareData {
-
-
 
     HomePage homePage;
     CommonPage commonPage;
     FramesPage framesPage;
 
     @Test
-    public void automationMethod() throws InterruptedException {
+    public void automationMethod() {
 
 
 

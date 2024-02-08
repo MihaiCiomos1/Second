@@ -1,16 +1,10 @@
-package demoQAWebsite.pages;
+package pages;
 
-import demoQAWebsite.HelperMethods.AlertMethods;
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.FramesMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class FramesPage extends demoQAWebsite.pages.CommonPage {
+public class FramesPage extends CommonPage {
 
     @FindBy (id = "frame1")
     private WebElement frame1Element;

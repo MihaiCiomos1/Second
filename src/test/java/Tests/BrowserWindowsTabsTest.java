@@ -1,17 +1,10 @@
 package demoQAWebsite.Tests;
 
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
-import demoQAWebsite.HelperMethods.WindowsMethods;
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.BrowserWebPage;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.HomePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import ShareData.ShareData;
 import org.testng.annotations.Test;
+import pages.BrowserWebPage;
+import pages.CommonPage;
+import pages.HomePage;
 
 public class BrowserWindowsTabsTest extends ShareData {
 
@@ -21,7 +14,7 @@ public class BrowserWindowsTabsTest extends ShareData {
     BrowserWebPage browserWebPage;
 
     @Test
-    public void automationMethod() throws InterruptedException {
+    public void automationMethod() {
 
 
 

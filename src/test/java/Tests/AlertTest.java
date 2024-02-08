@@ -1,20 +1,10 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.HelperMethods.AlertMethods;
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.AlertsPage;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.HomePage;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import ShareData.ShareData;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import pages.AlertsPage;
+import pages.CommonPage;
+import pages.HomePage;
 
 public class AlertTest extends ShareData {
 

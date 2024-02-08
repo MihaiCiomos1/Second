@@ -1,6 +1,7 @@
-package demoQAWebsite.pages;
+package pages;
 
-import demoQAWebsite.HelperMethods.*;
+
+import HelperMethods.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,22 +12,22 @@ import java.util.List;
 
 public class CommonPage {
 
-    WebDriver driver;
-    demoQAWebsite.HelperMethods.ElementsMethods elementsMethods;
-    demoQAWebsite.HelperMethods.JavascriptHelpers javascriptHelpers;
-    demoQAWebsite.HelperMethods.AlertMethods alertMethods;
-    Actions actions;
-    demoQAWebsite.HelperMethods.WindowsMethods windowsMethods;
-    demoQAWebsite.HelperMethods.FramesMethods framesMethods;
+    protected WebDriver driver;
+    protected ElementsMethods elementsMethods;
+    protected JavascriptHelpers javascriptHelpers;
+    protected AlertMethods alertMethods;
+    protected Actions actions;
+    protected WindowsMethods windowsMethods;
+    protected FramesMethods framesMethods;
 
     public CommonPage(WebDriver driver) {
         this.driver = driver;
-        this.elementsMethods = new demoQAWebsite.HelperMethods.ElementsMethods(driver);
-        this.javascriptHelpers = new demoQAWebsite.HelperMethods.JavascriptHelpers(driver);
-        this.alertMethods = new demoQAWebsite.HelperMethods.AlertMethods(driver);
+        this.elementsMethods = new ElementsMethods(driver);
+        this.javascriptHelpers = new JavascriptHelpers(driver);
+        this.alertMethods = new AlertMethods(driver);
         this.actions = new Actions(driver);
-        this.windowsMethods = new demoQAWebsite.HelperMethods.WindowsMethods(driver);
-        this.framesMethods = new demoQAWebsite.HelperMethods.FramesMethods(driver);
+        this.windowsMethods = new WindowsMethods(driver);
+        this.framesMethods = new FramesMethods(driver);
         PageFactory.initElements(driver,this);
     }
 

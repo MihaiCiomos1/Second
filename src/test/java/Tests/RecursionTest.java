@@ -1,14 +1,12 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+import pages.CommonPage;
+import pages.HomePage;
 
 import java.util.List;
 

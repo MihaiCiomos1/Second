@@ -29,6 +29,7 @@ public class mapTable {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400)");
 
+
         WebElement FormField= driver.findElement(By.xpath("//h5[text()='Forms']"));
         FormField.click();
 
@@ -78,6 +79,8 @@ public class mapTable {
         String SubjectsValue="Social Studies";
         SubjectsElement.sendKeys(SubjectsValue);
         SubjectsElement.sendKeys(Keys.ENTER);
+
+
 
         WebElement StateElement= driver.findElement(By.id("react-select-3-input"));
         js.executeScript("arguments[0].click();", StateElement);
