@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +23,10 @@ public class HomePage extends CommonPage {
 
     // Facem metode specifice pentru pagina
     public void goToDesiredMenu(String menu) {
-        elementsMethods.clickOnElement(consentElement);
+        try {
+            elementsMethods.clickOnElement(consentElement);
+        } catch (NoSuchElementException ignored){
+        }
         // Facem scroll ca sa fie vizibil elementul in pagina
         javascriptHelpers.scrollDown(400);
         elementsMethods.selectElementFromListByText(elements, menu);
