@@ -15,8 +15,6 @@ public class AlertTest extends ShareData {
     @Test
     public void automationMethod() {
 
-
-
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
         alertsPage = new AlertsPage(getDriver());
