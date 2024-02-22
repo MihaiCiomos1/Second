@@ -1,12 +1,12 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import ShareData.ShareData;
+import ShareData.Hooks;
 import org.testng.annotations.Test;
 import pages.BrowserWebPage;
 import pages.CommonPage;
 import pages.HomePage;
 
-public class BrowserWindowsTabsTest extends ShareData {
+public class BrowserWindowsTabsTest extends Hooks {
 
 
     HomePage homePage;
@@ -15,8 +15,6 @@ public class BrowserWindowsTabsTest extends ShareData {
 
     @Test
     public void automationMethod() {
-
-
 
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
@@ -28,26 +26,5 @@ public class BrowserWindowsTabsTest extends ShareData {
         // New Tab:
         browserWebPage.displayedTextFromNewTab();
         browserWebPage.displayedTextFromNewWindow();
-//        WebElement newTabButtonElement = driver.findElement(By.id("tabButton"));
-//        elementsMethods.clickOnElement(newTabButtonElement);
-//        windowsMethods.switchToOpenedTab();
-//        WebElement sampleHeadingFromNewTabElement = driver.findElement(By.id("sampleHeading"));
-//        System.out.println("Textul din new tab este: " + sampleHeadingFromNewTabElement.getText());
-//        windowsMethods.closeTab();
-
-//        windowsMethods.switchToMainTab();
-
-        // New Window:
-//        WebElement newWindowButtonElement = driver.findElement(By.id("windowButton"));
-//        elementsMethods.clickOnElement(newWindowButtonElement);
-//        windowsMethods.switchToOpenedWindow();
-//        WebElement sampleHeadingFromNewWindowElement = driver.findElement(By.id("sampleHeading"));
-//        System.out.println("Textul din new window este: " + sampleHeadingFromNewWindowElement.getText());
-//        windowsMethods.closeWindow();
-//
-//        windowsMethods.switchToMainWindow();
-
-
-
     }
 }
