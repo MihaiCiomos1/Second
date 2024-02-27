@@ -4,6 +4,8 @@ import HelperMethods.JavascriptHelpers;
 import ObjectData.PracticeFormObject;
 import PropertyUtility.PropertyUtility;
 import ShareData.Hooks;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.testng.annotations.Test;
 import pages.CommonPage;
 import pages.HomePage;
@@ -28,16 +30,23 @@ public class PracticeFormTest extends Hooks {
         practiceFormPage= new PracticeFormPage(getDriver());
 
         homePage.goToDesiredMenu("Forms");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Forms menu");
         commonPage.goToDesiredSubMenu("Practice Form");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Practice Form sub-menu");
 
 
         javascriptHelpers.scroll(0,400);
         practiceFormPage.completeFirstRegion(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the entire first region section");
         practiceFormPage.completeGender(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the gender section");
         practiceFormPage.completeSubjectWithList(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the subjects section");
         practiceFormPage.completeHobies(practiceFormObject);
-
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the hobbies section");
         practiceFormPage.completeState(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the state section");
         practiceFormPage.submit();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user clicks on submit button");
     }
 }

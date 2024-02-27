@@ -1,6 +1,8 @@
 package Tests;
 
 import ShareData.Hooks;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -19,13 +21,15 @@ public class RecursionTest extends Hooks {
     @Test
     public void parcurgereLista() {
 
-
         // Tema - De intrat succesiv folosind ce am invatat
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
 
         homePage.goToDesiredMenu("Interactions");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Interactions menu");
+
         commonPage.goToDesiredSubMenu("Sortable");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Sortable sub-menu");
 
         // Decalam elementele prin Drag and Drop
         Actions actions = new Actions(getDriver());
@@ -41,6 +45,8 @@ public class RecursionTest extends Hooks {
                     .build()
                     .perform();
         }
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user changes the order of elements");
+
 
 
     }

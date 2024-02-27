@@ -13,7 +13,6 @@ public class LoggerUtility {
 
     private static final String suiteLogsPath = "target/logs/suite/";
     private static final String regressionLogsPath = "target/logs/";
-
     private static final Logger logger = LogManager.getLogger();
 
     public static synchronized void startTestCase(String testName){
@@ -47,7 +46,6 @@ public class LoggerUtility {
             PrintWriter pw = new PrintWriter(regressionLogsPath+"RegressionLogs.log");
 
             for (String fileName : fileNames) {
-                System.out.println("Reading from " + fileName);
                 File f = new File(dir, fileName);
                 BufferedReader br = new BufferedReader(new FileReader(f));
                 pw.println("Contents of file " + fileName);

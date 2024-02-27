@@ -25,14 +25,19 @@ public class WebTableObject {
                     break;
                 case "lastName" :
                     setLastN(testData.get(key));
+                    break;
                 case "email" :
-                    setLastN(testData.get(key));
+                    setEmail(testData.get(key));
+                    break;
                 case "ageNr" :
-                    setLastN(testData.get(key));
+                    setAgeNr(testData.get(key));
+                    break;
                 case "salaryVal" :
-                    setLastN(testData.get(key));
+                    setSalaryVal(testData.get(key));
+                    break;
                 case "departmentName" :
-                    setLastN(testData.get(key));
+                    setDepartmentName(testData.get(key));
+                    break;
             }
         }
     }
